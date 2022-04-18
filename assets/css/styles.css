@@ -59,6 +59,7 @@ justify-center {
     rgb(162, 0, 255) 100%
   );
   border-radius: 10px;
+  display: block;
 }
 .btn:hover {
   cursor: pointer;
@@ -80,3 +81,39 @@ justify-center {
 #highscore-btn:hover {
   box-shadow: 0 0.4rem 1.4rem 0 rgba(255, 255, 0, 0.5);
 }
+/* End Page CSS */
+.end-form-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 30rem;
+}
+input{
+  margin-bottom: rem;
+  width: 20rem;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  border: none;
+  box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+#username {
+    margin-bottom: 3rem;
+    width: 100%;
+    outline: none;
+}
+#end-text {
+  font-size: 2.4rem;
+  color: white;
+  text-align: center;
+}
+
+#saveScoreBtn {
+  border: none;
+}
+

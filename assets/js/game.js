@@ -1,15 +1,18 @@
+//defining the constants from the html and linking them
 const question = document.querySelector("#question");
 const choices = Array.from(document.querySelectorAll(".choice-text"));
 const progressText = document.querySelector("#progressText");
 const scoreText = document.querySelector("#score");
 const progressBarFull = document.querySelector("#progressBarFull");
 
+//set initial values
 let currentQuestion = {};
 let acceptingAnswers = true;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
+//questions list
 let questions = [
   {
     question: "What is Wilsons favorite color?",
@@ -33,7 +36,7 @@ let questions = [
     choice2: "Mercedes",
     choice3: "Toyota",
     choice4: "Lamborghini",
-    answer: 4,
+    answer: 1,
   },
   {
     question: "How many languages can Wilson speak?",
@@ -44,7 +47,7 @@ let questions = [
     answer: 3,
   }
 ]
-
+//placing maximum values on the variables to limit the if statements
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 4
 
@@ -60,7 +63,7 @@ getNewQuestion = () => {
   if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
 
-    return window.location.assign("/end.html");
+    return window.location.assign("end.html");
   }
 
   questionCounter++
