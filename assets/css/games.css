@@ -1,3 +1,4 @@
+/* basic game css for the webpage template */
 body {
   color: white;
 }
@@ -49,7 +50,7 @@ body {
   text-align: center;
 }
 #countdown {
-    text-align: center;
+    text-align: center; 
   }
 #progressBar {
   width: 20rem;

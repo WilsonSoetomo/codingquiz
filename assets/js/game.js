@@ -86,12 +86,13 @@ function updateCountdown() {
     countDownEl.innerHTML = '${minutes}: ${seconds}';
 }
 
-window.onload = function () {
-    var fiveMinutes = 60 * 5,
-        display = document.querySelector('#time');
-    startTimer(fiveMinutes, display);
-};
+// window.onload = function () {
+//     var fiveMinutes = 60 * 5,
+//         display = document.querySelector('#time');
+//     startTimer(fiveMinutes, display);
+// };
 
+//setting the questions as an object and selecting each of them as an array
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionsIndex];
   question.innerText = currentQuestion.question;
@@ -106,6 +107,7 @@ window.onload = function () {
   acceptingAnswers = true;
 };
 
+//determining situations when the right or wrong answers are selected
 choices.forEach((choice) => {
   choice.addEventListener("click", e => {
     if (!acceptingAnswers) return;
@@ -128,7 +130,7 @@ choices.forEach((choice) => {
     }, 1000);
   });
 });
-
+//effects of the score when the right answer is selected
 incrementScore = (num) => {
   score += num;
   scoreText.innerText = score;
