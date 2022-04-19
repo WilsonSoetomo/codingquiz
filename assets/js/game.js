@@ -45,11 +45,11 @@ let questions = [
     choice3: "3",
     choice4: "4",
     answer: 3,
-  }
-]
+  },
+];
 //placing maximum values on the variables to limit the if statements
-const SCORE_POINTS = 100
-const MAX_QUESTIONS = 4
+const SCORE_POINTS = 100;
+const MAX_QUESTIONS = 4;
 
 startGame = () => {
   questionCounter = 0;
@@ -60,39 +60,39 @@ startGame = () => {
 
 //when all questions have been answered, user will be directed to end.html
 getNewQuestion = () => {
-  if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+  if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
 
     return window.location.assign("end.html");
   }
-// //trying to create animations for the progress bar to move everytime a level is passed
-//   questionCounter++
-//   progressText.innerText = 'Question ${questionCounter} of ${MAX_QUESTIONS}'
-//   progressBarFull.style.width = "${(questionCounter/MAX_QUESTIONS) * 100}%"
+  // //trying to create animations for the progress bar to move everytime a level is passed
+  //   questionCounter++
+  //   progressText.innerText = 'Question ${questionCounter} of ${MAX_QUESTIONS}'
+  //   progressBarFull.style.width = "${(questionCounter/MAX_QUESTIONS) * 100}%"
 
-//Timer for the quiz
-const startingMinutes = 1;
-let time = startingMinutes * 60;
+  //Timer for the quiz
+  const startingMinutes = 1;
+  let time = startingMinutes * 60;
 
-const countDownEl = document.getElementById('countdown');
+  const countDownEl = document.getElementById("countdown");
 
-setInterval(updateCountdown, 1000)
+  setInterval(updateCountdown, 1000);
 
-function updateCountdown() {
-    const minutes = Math.floor (time/60);
+  function updateCountdown() {
+    const minutes = Math.floor(time / 60);
     let seconds = time % 60;
     time--;
 
-    countDownEl.innerHTML = '${minutes}: ${seconds}';
-}
+    countDownEl.innerHTML = "${minutes}: ${seconds}";
+  }
 
-// window.onload = function () {
-//     var fiveMinutes = 60 * 5,
-//         display = document.querySelector('#time');
-//     startTimer(fiveMinutes, display);
-// };
+  // window.onload = function () {
+  //     var fiveMinutes = 60 * 5,
+  //         display = document.querySelector('#time');
+  //     startTimer(fiveMinutes, display);
+  // };
 
-//setting the questions as an object and selecting each of them as an array
+  //setting the questions as an object and selecting each of them as an array
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionsIndex];
   question.innerText = currentQuestion.question;
@@ -101,7 +101,7 @@ function updateCountdown() {
     const number = choice.dataset["number"];
     choice.innerText = currentQuestion["choice" + number];
   });
-//removing a question from the object array so that remaining questions won't repeat
+  //removing a question from the object array so that remaining questions won't repeat
   availableQuestions.splice(questionsIndex, 1);
 
   acceptingAnswers = true;
@@ -109,7 +109,7 @@ function updateCountdown() {
 
 //determining situations when the right or wrong answers are selected
 choices.forEach((choice) => {
-  choice.addEventListener("click", e => {
+  choice.addEventListener("click", (e) => {
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
