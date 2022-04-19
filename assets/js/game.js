@@ -65,10 +65,32 @@ getNewQuestion = () => {
 
     return window.location.assign("end.html");
   }
+// //trying to create animations for the progress bar to move everytime a level is passed
+//   questionCounter++
+//   progressText.innerText = 'Question ${questionCounter} of ${MAX_QUESTIONS}'
+//   progressBarFull.style.width = "${(questionCounter/MAX_QUESTIONS) * 100}%"
 
-  questionCounter++
-  progressText.innerText = 'Question ${questionCounter} of ${MAX_QUESTIONS}'
-  progressBarFull.style.width = "${(questionCounter/MAX_QUESTIONS) * 100}%"
+//Timer for the quiz
+const startingMinutes = 1;
+let time = startingMinutes * 60;
+
+const countDownEl = document.getElementById('countdown');
+
+setInterval(updateCountdown, 1000)
+
+function updateCountdown() {
+    const minutes = Math.floor (time/60);
+    let seconds = time % 60;
+    time--;
+
+    countDownEl.innerHTML = '${minutes}: ${seconds}';
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
 
   const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
   currentQuestion = availableQuestions[questionsIndex];
@@ -78,7 +100,7 @@ getNewQuestion = () => {
     const number = choice.dataset["number"];
     choice.innerText = currentQuestion["choice" + number];
   });
-
+//removing a question from the object array so that remaining questions won't repeat
   availableQuestions.splice(questionsIndex, 1);
 
   acceptingAnswers = true;

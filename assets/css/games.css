@@ -48,6 +48,9 @@ body {
 .hud-main-text {
   text-align: center;
 }
+#countdown {
+    text-align: center;
+  }
 #progressBar {
   width: 20rem;
   height: 3rem;
