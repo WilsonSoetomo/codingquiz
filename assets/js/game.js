@@ -66,12 +66,12 @@ getNewQuestion = () => {
     return window.location.assign("end.html");
   }
   // //trying to create animations for the progress bar to move everytime a level is passed
-  //   questionCounter++
-  //   progressText.innerText = 'Question ${questionCounter} of ${MAX_QUESTIONS}'
-  //   progressBarFull.style.width = "${(questionCounter/MAX_QUESTIONS) * 100}%"
+    questionCounter++
+    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
+    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
 
   //Timer for the quiz
-  const startingMinutes = 1;
+  const startingMinutes = 2;
   let time = startingMinutes * 60;
 
   const countDownEl = document.getElementById("countdown");
@@ -83,7 +83,7 @@ getNewQuestion = () => {
     let seconds = time % 60;
     time--;
 
-    countDownEl.innerHTML = "${minutes}: ${seconds}";
+    countDownEl.innerHTML = `${minutes}: ${("0" + seconds).slice(-2)}`;
   }
 
   // window.onload = function () {
