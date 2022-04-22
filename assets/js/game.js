@@ -1,9 +1,13 @@
+//Timer for the quiz
+let time = 120;
+
 //defining the constants from the html and linking them
 const question = document.querySelector("#question");
 const choices = Array.from(document.querySelectorAll(".choice-text"));
 const progressText = document.querySelector("#progressText");
 const scoreText = document.querySelector("#score");
 const progressBarFull = document.querySelector("#progressBarFull");
+const countDownEl = document.getElementById("countdown");
 
 //set initial values
 let currentQuestion = {};
@@ -53,38 +57,33 @@ const MAX_QUESTIONS = 4;
 
 startGame = () => {
   questionCounter = 0;
-  score = 0;
   availableQuestions = [...questions];
   getNewQuestion();
+  timerStart();
 };
 
+function timerStart() {
+  var timerInterval = setInterval(function () {
+    console.log("Hello");
+    time--;
+    const minutes = Math.floor(time / 60);
+
+    countDownEl.textContent = `Seconds left: ${time}`;
+  }, 1000);
+}
+
+// function updateCountdown(interval) {}
 //when all questions have been answered, user will be directed to end.html
 getNewQuestion = () => {
   if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
-    localStorage.setItem("mostRecentScore", score);
+    localStorage.setItem("mostRecentScore", score + time);
 
     return window.location.assign("end.html");
   }
   // //trying to create animations for the progress bar to move everytime a level is passed
-    questionCounter++
-    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
-    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
-
-  //Timer for the quiz
-  const startingMinutes = 2;
-  let time = startingMinutes * 60;
-
-  const countDownEl = document.getElementById("countdown");
-
-  setInterval(updateCountdown, 1000);
-
-  function updateCountdown() {
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-    time--;
-
-    countDownEl.innerHTML = `${minutes}: ${("0" + seconds).slice(-2)}`;
-  }
+  questionCounter++;
+  progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
+  progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
   // window.onload = function () {
   //     var fiveMinutes = 60 * 5,
